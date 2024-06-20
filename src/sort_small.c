@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:41 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 18:16:23 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:08:32 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	get_min(t_list **stack, int value)
 {
 	t_list	*head;
-	int		min;
+	int		min; //見つかった最小値を格納
 	
 	head = *stack;
 	if (!head) {
@@ -29,6 +29,7 @@ static int	get_min(t_list **stack, int value)
 		head = head->next;
 		printf("Checking index: %d, current min: %d, excluded value: %d\n", head->index, min, value);
 		if ((head->index < min) && head->index != value)
+		//現在の要素のindexがminより小さく、かつvalueと異なる場合
 		{
 			min = head->index;
 			printf("Updated min: %d at index: %d\n", min, head->index);//debug

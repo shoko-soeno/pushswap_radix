@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 22:42:53 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 08:56:00 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 18:54:12 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static t_list	*get_next_min(t_list **stack)
 	t_list	*min;
 	int		has_min;
 
-	min = NULL;
-	has_min = 0;
-	head = *stack;
+	min = NULL; //最小値を持つ要素へのポインタ
+	has_min = 0; //最小値が見つかったかどうかを示すフラグ
+	head = *stack; //stackの先頭から操作するためのポインタ
 	if (head)
 	{
 		while (head)
