@@ -1,0 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/18 20:25:35 by ssoeno            #+#    #+#             */
+/*   Updated: 2024/06/20 07:52:36 by ssoeno           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	swap(t_list **stack)
+{
+	t_list	*head;
+	t_list	*next;
+	int		tmp_value;
+	size_t	tmp_index;
+
+	//リストが空でなく、かつ最低でも2つのノードがあるかどうかを確認
+	//next->valueの呼び出しなどでセグフォが発生しないように
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		ft_putstr_fd("Error occurred while swapping", 1);
+		return (-1);
+	}
+	head = *stack;
+	next = head->next;
+	tmp_value = head->value;
+	tmp_index = head->index;
+	head->value = next->value;
+	head->index = next->index;
+	next->value = tmp_value;
+	next->index = tmp_index;
+	return (0);
+}
+
+int	sa(t_list **stack_a)
+{
+	if (swap(stack_a) != 0)
+		return (-1);
+	ft_putstr_fd("sa\n", 1);
+	return (0);
+}
+
+int	sb(t_list **stack_b)
+{
+	if (!swap(stack_b))
+		return (false);
+	ft_putstr_fd("sb\n", 1);
+	return (true);
+}
+
+int	ss(t_list **stack_a, t_list **stack_b)
+{
+	if (!swap(stack_a) || !swap(stack_b))
+		return (false);
+	swap(stack_a);
+	swap(stack_b);
+	ft_putstr_fd("ss\n", 1);
+	return (true);
+}
+
+
+
+
+
+
