@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:49:50 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 08:35:00 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 17:15:25 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	sort_small(t_list **stack_a, t_list **stack_b);
 void	ft_check_args(int argc, char **argv);
 
 // index
-//static t_list	*get_next_min(t_list **stack);
 void	index_compression(t_list **stack);
+
+void	radix_sort(t_list **stack_a, t_list **stack_b);
 
 #endif

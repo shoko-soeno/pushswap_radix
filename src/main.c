@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:32 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 08:34:18 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 17:33:15 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
 		sort_small(stack_a, stack_b);
-	// else
-	// 	radix_sort(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 	printList(*stack_a);
 }
 
@@ -56,7 +56,6 @@ int	main(int argc, char *argv[])
 	t_list	**stack_a;
 	t_list	**stack_b;
 	
-	(void)argv;
 	if (argc < 2)
 	{
 		ft_putstr_fd("input error", 1);

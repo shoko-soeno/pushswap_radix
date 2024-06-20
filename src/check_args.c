@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 23:18:46 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 09:21:07 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 17:28:42 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static int	ft_duplicate(int num, char **argv, int i)
 	return (0);
 }
 
-static int	ft_isnum(char *num)
+bool	ft_isnum(char *num)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (num[0] == '-')
@@ -59,10 +59,10 @@ static int	ft_isnum(char *num)
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))
-			return (0);
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 void	ft_check_args(int argc, char **argv)

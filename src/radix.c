@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:28 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 09:56:29 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/20 17:21:24 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	get_max_bits(t_list **stack)
 	int		max_bits;
 
 	head = *stack;
+	if (!head)
+		return 0;
 	max = head->index; //最初の要素の index を max に設定
 	max_bits = 0;
 	while (head) //index の最大値を求めるためのループ
@@ -35,36 +37,6 @@ static int	get_max_bits(t_list **stack)
 		max_bits++;
 	return (max_bits);
 }
-/* 例えば
-max = 10 (バイナリで 1010) 、最初の max_bits が 3 とする
-max >> 3 は 1010 を 3 ビット右にシフトして 0001 となります。
-この結果は 0 ではないため、このシフト後に残る 1 は、
-元の max の値の中でまだ重要なビットが残っていることを意味します。
-そのため、max_bits をさらに増やす必要があります。
-
-max = 10、バイナリで 1010
-初期値 max_bits = 0
-イテレーション1:
-
-max >> 0 = 1010 (10)
-結果は 0 ではないので max_bits を 1 にインクリメント。
-イテレーション2:
-
-max >> 1 = 0101 (5)
-結果は 0 ではないので max_bits を 2 にインクリメント。
-イテレーション3:
-
-max >> 2 = 0010 (2)
-結果は 0 ではないので max_bits を 3 にインクリメント。
-イテレーション4:
-
-max >> 3 = 0001 (1)
-結果は 0 ではないので max_bits を 4 にインクリメント。
-イテレーション5:
-
-max >> 4 = 0000 (0)
-結果が 0 なのでループを終了。最終的な max_bits は 4 です。
-*/
 
 /*
 radix_sort
@@ -84,10 +56,10 @@ stack_b にあるすべての要素を stack_a に戻す（pa）
 void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head_a;
-	int		i;
-	int		j;
-	int		size;
-	int		max_bits;
+	int		i; //処置中のビットの位置
+	int		j; //各ビット位置についてスタックを操作するためのカウンタ
+	int		size; //スタックの要素数
+	int		max_bits; //ソートに必要なビット数
 
 	i = 0;
 	head_a = *stack_a;
@@ -99,13 +71,16 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 		while (j++ < size)
 		{
 			head_a = *stack_a;
-			if (((head_a->index >> i) & 1) == 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
+			if (!head_a)
+				break; //スタックが空になったらループを中断
+			//最下位ビットに移動かつビットマスクを適用
+			if (((head_a->index >> i) & 1) == 1) //iビット目が1の場合
+				ra(stack_a); //stack_aの先頭を末尾に移動
+			else //iビット目が0の場合
+				pb(stack_a, stack_b); //stack_aの先頭をstack_bに移動
 		}
 		while (ft_lstsize(*stack_b) != 0)
-			pa(stack_a, stack_b);
-		i++;
+			pa(stack_a, stack_b); //stack_bにあるすべての要素をstack_aに戻す
+		i++; //max_bitsまで繰り返す
 	}
 }
