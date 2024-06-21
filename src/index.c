@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 22:42:53 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/21 16:19:42 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/21 17:00:47 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	index_compression(t_list **stack)
 	while (head)
 	{
 		head->index = index++; //現在のindexを設定してからindexをインクリメント
-		printf("Assigning index %d to value %d\n", index, head->value); //debug
+		//printf("Assigning index %d to value %d\n", index, head->value); //debug
 		head = get_next_min(stack);
 		//headがNULLになるまで（全ての要素にindexが振られるまで）繰り返す
 	}

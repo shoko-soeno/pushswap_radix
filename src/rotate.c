@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:35 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/21 16:18:00 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/21 18:00:30 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	rotate(t_list **stack)
 {
 	t_list	*head;
-	t_list	*tail;
+	t_list	*last;
 
 	if (ft_lstsize(*stack) < 2) //0-1個の要素しかない
 		return (-1);
 	head = *stack; //headにスタックの先頭を格納
-	tail = ft_lstlast(head); //tailにスタックの最後の要素を格納
+	last = ft_lstlast(head); //tailにスタックの最後の要素を格納
 	*stack = head->next; //スタックの先頭を2番目の要素に更新
 	head->next = NULL; //headをリストの最後にする準備
-	tail->next = head; //tailのnextにheadを設定することで、リストの最後に追加
+	last->next = head; //tailのnextにheadを設定することで、リストの最後に追加
 	/* デバッグ: 結果を出力
     printf("After rotate:\n");
     for (t_list *current = *stack; current != NULL; current = current->next) {
