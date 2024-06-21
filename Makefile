@@ -6,7 +6,7 @@
 #    By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 21:20:45 by ssoeno            #+#    #+#              #
-#    Updated: 2024/06/20 08:40:30 by ssoeno           ###   ########.fr        #
+#    Updated: 2024/06/21 13:42:41 by ssoeno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 CHECK = checker
 
 CC = gcc
-CFLAGS = -g -Wall -Werror -Wextra -O3 -MMD -MP -Iincludes
+CFLAGS = -g -Wall -Werror -Wextra -fsanitize=address -O3 -MMD -MP -Iincludes
 
 LIBFT = ./libft
 SRCS =  $(wildcard src/*.c utils/*.c)

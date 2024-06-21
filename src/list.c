@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 00:07:31 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 09:26:02 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/21 16:16:44 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(int value)
 	new->value = value;
 	new->index = -1; // -1 means that the index is not set
 	new->next = NULL;
+	//printf("Created new node with value %d\n", new->value); //debug
 	return (new);
 }
 
