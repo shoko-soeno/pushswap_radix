@@ -6,11 +6,51 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:28 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 17:21:24 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/22 18:45:02 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// int	get_max_ternary_bits(t_list **stack) {
+// 	t_list *head = *stack;
+// 	int max_index = 0;
+	
+// 	while (head) {
+// 		if (head->index > max_index)
+// 			max_index = head->index;
+// 		head = head->next;
+// 	}
+// 	int max_bits = 0;
+// 	while (max_index > 0) {
+// 		max_bits++;
+// 		max_index /= 3;
+// 	}
+// 	return max_bits;
+// }
+
+// void ternary_radix_sort(t_list **stack_a, t_list **stack_b, t_list **stack_c)
+// {
+// 	int max_bits = get_max_ternary_bits(stack_a);
+// 	int size = ft_lstsize(*stack_a);
+// 	for (int i = 0; i < max_bits; i++) {
+// 		int count = size;
+// 		while (count-- > 0) {
+// 			t_list *node = *stack_a;
+// 			*stack_a = node->next;  // 先頭を削除
+// 			node->next = NULL;
+// 			int digit = (node->index / (int)pow(3, i)) % 3;  // 三進数の現在の桁
+// 			if (digit == 0)
+// 				ft_lstadd_back(stack_a, node);  // stack_aに追加
+// 			else if (digit == 1)
+// 				ft_lstadd_back(stack_b, node);  // stack_bに追加
+// 			else
+// 				ft_lstadd_back(stack_c, node);  // stack_cに追加
+// 		}
+// 		pa(stack_a, stack_b);
+// 		pa(stack_a, stack_c);
+// 	}
+// }
 
 //スタック内の要素の index 値の最大値を求め、その値を表現するのに必要なビット数を計算
 static int	get_max_bits(t_list **stack)
