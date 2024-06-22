@@ -17,10 +17,16 @@ void	ft_free(char **str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return ;
 	while (str[i])
 		i++;
-	while (i >= 0)
-		free(str[i--]);
+	while (i > 0)
+	{
+		printf("%d\n", i - 1); //debug
+		free(str[--i]);
+	}
+	free(str);
 }
 
 int	is_sorted(t_list **stack)

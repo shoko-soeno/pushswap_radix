@@ -65,7 +65,7 @@ bool	ft_isnum(char *num)
 	return (true);
 }
 
-void	ft_check_args(int argc, char **argv)
+bool	ft_check_args(int argc, char **argv)
 {
 	int		i;
 	long	tmp;
@@ -83,10 +83,14 @@ void	ft_check_args(int argc, char **argv)
 			|| tmp < -2147483648 || tmp > 2147483647)
 			{
 				ft_putstr_fd("Error\n", 2);
-				ft_free(args);
-				return ;
+				//exit(1); //this line will free all of allocated memorty and finish this program
+				if (argc == 2){
+					ft_free(args);
+				}
+				return (false);
 			}
 	}
 	if (argc == 2)
 		ft_free(args);
+	return (true);
 }

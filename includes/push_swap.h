@@ -56,7 +56,7 @@ void	printList(t_list *head);
 
 void	sort_small(t_list **stack_a, t_list **stack_b);
 
-void	ft_check_args(int argc, char **argv);
+bool	ft_check_args(int argc, char **argv);
 
 // index
 void	index_compression(t_list **stack);
