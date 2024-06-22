@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 20:25:32 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/21 16:14:13 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/22 14:29:23 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,15 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 		sort_small(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
-	printList(*stack_a);
+	//printList(*stack_a);
 }
+
+
+#include <libc.h>
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q push_swap");
+// }
 
 int	main(int argc, char *argv[])
 {
@@ -79,10 +86,7 @@ int	main(int argc, char *argv[])
 	t_list	**stack_b;
 	
 	if (argc < 2)
-	{
-		ft_putstr_fd("input error", 1);
 		return (-1);
-	}
 	ft_check_args(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));

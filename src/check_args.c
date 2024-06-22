@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 23:18:46 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/06/20 17:28:42 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/06/22 14:20:49 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,17 @@ void	ft_check_args(int argc, char **argv)
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-	{
-		i = 1;
 		args = argv;
-	}
-	while (args[i])
+	while (args[++i])
 	{
 		tmp = ft_atol(args[i]);
-		if (!ft_isnum(args[i]))
-			ft_putstr_fd("Error\n", 1);
-		if (ft_duplicate(tmp, args, i))
-			ft_putstr_fd("Error\n", 1);
-		if (tmp < -2147483648 || tmp > 2147483647)
-			ft_putstr_fd("Error\n", 1);
-		i++;
+		if (!ft_isnum(args[i]) || ft_duplicate(tmp, args, i)
+			|| tmp < -2147483648 || tmp > 2147483647)
+			{
+				ft_putstr_fd("Error\n", 2);
+				ft_free(args);
+				return ;
+			}
 	}
 	if (argc == 2)
 		ft_free(args);
